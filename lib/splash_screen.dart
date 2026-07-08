@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:paykaro/main.dart';
-import 'package:paykaro/Login.dart';
+import 'package:paynow/main.dart';
+import 'package:paynow/Login.dart';
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 

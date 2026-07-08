@@ -1,442 +1,338 @@
 import 'package:flutter/material.dart';
-import 'package:paykaro/MainPage2.dart';
-import 'package:paykaro/BottomNavigationBar/Account.dart';
-import 'package:paykaro/subpages.dart';
-import 'package:paykaro/Login.dart';
+import 'package:paynow/services/wallet_service.dart';
+import 'package:paynow/subpages.dart';
+import 'package:paynow/screens/add_money_screen.dart';
+import 'package:paynow/screens/rewards_screen.dart';
+import 'package:paynow/screens/savings_goals_screen.dart';
+import 'package:paynow/screens/request_money_screen.dart';
+import 'package:paynow/screens/bill_split_screen.dart';
+import 'package:paynow/screens/spending_analytics_screen.dart';
+import 'package:paynow/screens/upi_qr_screen.dart';
+import 'package:paynow/screens/refer_earn_screen.dart';
+import 'package:paynow/screens/emi_calculator_screen.dart';
+import 'package:paynow/screens/currency_converter_screen.dart';
+import 'package:paynow/screens/budget_planner_screen.dart';
+import 'package:paynow/screens/gift_cards_screen.dart';
+import 'package:paynow/screens/achievements_screen.dart';
+import 'package:paynow/screens/support_screen.dart';
+import 'package:paynow/screens/sip_calculator_screen.dart';
+import 'package:paynow/screens/loan_application_screen.dart';
+import 'package:paynow/screens/notifications_screen.dart';
+import 'package:paynow/screens/daily_checkin_screen.dart';
+import 'package:paynow/screens/credit_score_screen.dart';
+import 'package:paynow/screens/investment_portfolio_screen.dart';
+import 'package:paynow/screens/payment_reminders_screen.dart';
+import 'package:paynow/screens/transaction_search_screen.dart';
+import 'package:paynow/screens/fd_calculator_screen.dart';
+import 'package:paynow/screens/rd_calculator_screen.dart';
+import 'package:paynow/screens/gst_calculator_screen.dart';
+import 'package:paynow/screens/tip_calculator_screen.dart';
+import 'package:paynow/screens/subscription_manager_screen.dart';
+import 'package:paynow/screens/calendar_view_screen.dart';
+import 'package:paynow/screens/bnpl_screen.dart';
+import 'package:paynow/screens/insurance_hub_screen.dart';
+import 'package:paynow/screens/stock_trading_screen.dart';
+import 'package:paynow/screens/income_tax_screen.dart';
+import 'package:paynow/screens/retirement_planner_screen.dart';
+import 'package:paynow/screens/net_worth_screen.dart';
+import 'package:paynow/screens/mutual_fund_screen.dart';
+import 'package:paynow/screens/monthly_report_screen.dart';
+import 'package:paynow/screens/loan_prepayment_screen.dart';
+import 'package:paynow/screens/crypto_wallet_screen.dart';
+
 class Home extends StatefulWidget {
   const Home({super.key});
-
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  // TextEditingController searchbar=TextEditingController();
+  final _wallet = WalletService();
+  void _refresh() => setState(() {});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-          child: Container(
-            margin: EdgeInsets.only(top:10,bottom:10,left:20,right:20),
-            child: Column(
-              children: [
-                SizedBox(height: 10,),
-                  Container(
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        // border: Border.all(),
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 5,
-                            blurRadius: 7,
-                            offset: Offset(0, 3), // Changes position of the shadow
-                          ),
-                        ],
-                      ),
-                    child:SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          SizedBox(height: 20,),
-                             Container(
-                               child:Container(
-                                 // color: Colors.black,
-                                    child: Row(
-                                      children: [
-                                      SizedBox(width: 10),
-                                 ClipRRect(
-                                     borderRadius: BorderRadius.circular(15),
-                                     child:GestureDetector(
-                                       onTap: (){
-                                         // _pickFile();
-                                         debugPrint("Banner1");
-                                       },
-                                       child: Image.asset("assets/Images/banner.jpg",
-                                         width: 360.0,
-                                         // height:150.0,
-                                         // fit: BoxFit.cover,
-                                       ),
-                                     )
-                                 ),//Banner1
-                                 SizedBox(width: 10),
-                                 ClipRRect(
-                                     borderRadius: BorderRadius.circular(15),
-                                     child:GestureDetector(
-                                       onTap: (){
-                                         // _pickFile();
-                                         debugPrint("Banner2");
-                                       },
-                                       child: Image.asset("assets/Images/banner.jpg",
-                                         width: 360.0,
-                                         // height:150.0,
-                                         // fit: BoxFit.cover,
-                                       ),
-                                     )
-                                 ),//Banner2
-                                 SizedBox(width: 10),
-                                 ClipRRect(
-                                     borderRadius: BorderRadius.circular(15),
-                                     child:GestureDetector(
-                                       onTap: (){
-                                         // _pickFile();
-                                         debugPrint("Banner3");
-                                       },
-                                       child: Image.asset("assets/Images/banner.jpg",
-                                         width: 360.0,
-                                         // height:150.0,
-                                         // fit: BoxFit.cover,
-                                       ),
-                                     )
-                                    ),
-                                      ],
-                                    )
-                                ),//BannerContainer
-                            ),
-                        ],
-                      ),
-                    )
-                  ), //BannerOrOffer
-
-                SizedBox(height: 10,),
-
-                Container(
-                  padding: EdgeInsets.only(left:10,right:10),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    // border: Border.all(),
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        offset: Offset(0, 3), // Changes position of the shadow
-                      ),
-                    ],
-                  ),
-                    child: Container(
-
-                      child: Column(
-                        children: [
-                          SizedBox(height: 10,),
-                          Text("Services",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
-                          SizedBox(height: 10,),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-
-                              SizedBox(width: 20,),
-                              Column(
-                                children:<Widget>[
-                                  ElevatedButton(onPressed: (){
-                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>LightBill()));
-                                  }, child: Icon(Icons.receipt), style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.cyanAccent,
-                                  iconColor:Colors.black,
-                                  padding: EdgeInsets.all(20),
-                                  textStyle: TextStyle(fontSize: 16), elevation: 5, shadowColor: Colors.green,),),
-                                  SizedBox(height: 5,),
-                                  Text("Light Bill",style:TextStyle(fontSize:15,fontWeight: FontWeight.bold)),
-                                ]
-                              ),
-                              SizedBox(width: 20,),
-                              Column(
-                                children:<Widget>[
-                                  ElevatedButton(onPressed: (){
-                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>AddCart()));
-                                  }, child: Icon(Icons.add_card), style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.cyanAccent,
-                                    iconColor:Colors.black,
-                                    padding: EdgeInsets.all(20),
-                                    textStyle: TextStyle(fontSize: 16), elevation: 5, shadowColor: Colors.green,),),
-                                  SizedBox(height: 5,),
-                                  Text("Add Cart",style:TextStyle(fontSize:15,fontWeight: FontWeight.bold)),
-                                ]
-                            ),
-                              SizedBox(width: 20,),
-                            Column(
-                                children:<Widget>[
-                                  ElevatedButton(onPressed: (){
-                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Recharge()));
-                                  }, child: Icon(Icons.phone_android), style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.cyanAccent,
-                                    iconColor:Colors.black,
-                                    padding: EdgeInsets.all(20),
-                                    textStyle: TextStyle(fontSize: 16), elevation: 5, shadowColor: Colors.green,),),
-                                  SizedBox(height: 5,),
-                                  Text("Recharge",style:TextStyle(fontSize:15,fontWeight: FontWeight.bold)),
-                                ]
-                            ),
-                              SizedBox(width: 20,),
-                            Column(
-                                children:<Widget>[
-                                  ElevatedButton(onPressed: (){
-                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Balance()));
-                                    }, child: Icon(Icons.account_balance_outlined), style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.cyanAccent,
-                                    iconColor:Colors.black,
-                                    padding: EdgeInsets.all(20),
-                                    textStyle: TextStyle(fontSize: 16), elevation: 5, shadowColor: Colors.green,),),
-                                  SizedBox(height: 5,),
-                                  Text("Balance",style:TextStyle(fontSize:15,fontWeight: FontWeight.bold)),
-                                ]
-                            ),
-                              SizedBox(width: 20,),]
-                        ),
-
-                        SizedBox(height: 15,),
-
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              Column(
-                                  children:<Widget>[
-                                    ElevatedButton(onPressed: (){
-                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Chart()));
-                                    }, child: Icon(Icons.addchart_outlined), style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.cyanAccent,
-                                      iconColor:Colors.black,
-                                      padding: EdgeInsets.all(20),
-                                      textStyle: TextStyle(fontSize: 16), elevation: 5, shadowColor: Colors.green,),),
-                                    SizedBox(height: 5,),
-                                    Text("Chart",style:TextStyle(fontSize:15,fontWeight: FontWeight.bold)),
-                                  ]
-                              ),
-                              Column(
-                                  children:<Widget>[
-                                    ElevatedButton(onPressed: (){
-                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>YourBusiness()));
-                                      }, child: Icon(Icons.add_business_sharp), style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.cyanAccent,
-                                      iconColor:Colors.black,
-                                      padding: EdgeInsets.all(20),
-                                      textStyle: TextStyle(fontSize: 16), elevation: 5, shadowColor: Colors.green,),),
-                                    SizedBox(height: 5,),
-                                    Text("Business",style:TextStyle(fontSize:15,fontWeight: FontWeight.bold)),
-                                  ]
-                              ),
-                              Column(
-                                  children:<Widget>[
-                                    ElevatedButton(onPressed: (){
-                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Unit()));
-                                      }, child: Icon(Icons.ad_units_rounded), style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.cyanAccent,
-                                      iconColor:Colors.black,
-                                      padding: EdgeInsets.all(20),
-                                      textStyle: TextStyle(fontSize: 16), elevation: 5, shadowColor: Colors.green,),),
-                                    SizedBox(height: 5,),
-                                    Text("Units",style:TextStyle(fontSize:15,fontWeight: FontWeight.bold)),
-                                  ]
-                              ),
-                              Column(
-                                  children:<Widget>[
-                                    ElevatedButton(onPressed: (){
-                                      Navigator.push(context, MaterialPageRoute(builder: (context)=>Wallet()));
-                                      }, child: Icon(Icons.account_balance_wallet), style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.cyanAccent,
-                                      iconColor:Colors.black,
-                                      padding: EdgeInsets.all(20),
-                                      textStyle: TextStyle(fontSize: 16), elevation: 5, shadowColor: Colors.green,),),
-                                    SizedBox(height: 5,),
-                                    Text("Wallet",style:TextStyle(fontSize:15,fontWeight: FontWeight.bold)),
-                                  ]
-                              ), ]
-                        ),
-                        SizedBox(height: 15,),
+      body: SingleChildScrollView(
+        child: Container(
+          margin: const EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
+          child: Column(
+            children: [
+              // Balance Card
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(colors: [Colors.blue, Colors.purple]),
+                  borderRadius: BorderRadius.circular(16),
+                  boxShadow: [BoxShadow(color: Colors.grey.withOpacity(0.3), blurRadius: 10, offset: const Offset(0, 4))],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text('Total Balance', style: TextStyle(color: Colors.white70, fontSize: 14)),
+                    const SizedBox(height: 8),
+                    Text('₹${_wallet.balance.toStringAsFixed(0)}', style: const TextStyle(color: Colors.white, fontSize: 36, fontWeight: FontWeight.bold)),
+                    const SizedBox(height: 8),
+                    Row(
+                      children: [
+                        const Icon(Icons.star, color: Colors.amber, size: 18),
+                        const SizedBox(width: 4),
+                        Text('${_wallet.rewardPoints} Reward Points', style: const TextStyle(color: Colors.amber, fontSize: 14, fontWeight: FontWeight.w500)),
+                        const Spacer(),
+                        const Icon(Icons.emoji_events, color: Colors.white, size: 18),
+                        const SizedBox(width: 4),
+                        Text('${_wallet.achievements.where((a) => a.isUnlocked).length} Badges', style: const TextStyle(color: Colors.white70, fontSize: 14)),
                       ],
-                    )
-                  ),
-                ),//Services
-
-                SizedBox(height: 10,),
-
-                Container(
-                    padding: EdgeInsets.only(left:10,right:10),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      // border: Border.all(),
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 5,
-                          blurRadius: 7,
-                          offset: Offset(0, 3), // Changes position of the shadow
+                    ),
+                    const SizedBox(height: 16),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: OutlinedButton.icon(
+                            onPressed: () async {
+                              final result = await Navigator.push(context, MaterialPageRoute(builder: (_) => const AddMoneyScreen()));
+                              if (result == true) _refresh();
+                            },
+                            icon: const Icon(Icons.add, color: Colors.white),
+                            label: const Text('Add Money', style: TextStyle(color: Colors.white)),
+                            style: OutlinedButton.styleFrom(side: const BorderSide(color: Colors.white)),
+                          ),
                         ),
                       ],
                     ),
-                    child: Column(
+                  ],
+                ),
+              ),
+              const SizedBox(height: 16),
+
+              // Quick Actions Row 1
+              _sectionTitle('Quick Actions'),
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: _cardStyle(),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        SizedBox(height: 10,),
-                        Text("Peoples",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
-                        SizedBox(height: 10,),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-
-                              Column(
-                                children:[
-                                  // const Padding(padding: EdgeInsets.only(left: 10,right: 10)),
-                                  ClipRRect(
-                                    borderRadius: BorderRadius.circular(25),
-                                    child:GestureDetector(
-                                      onTap:(){
-                                        debugPrint("You Have selected Account1");
-                                        // Navigator.of(context).pop();
-                                        Navigator.push(context, MaterialPageRoute(builder: (context)=>User1()));
-                                      },
-                                      child: Image.asset("assets/Images/OIP.jpeg",
-                                        width: 100.0,
-                                        height: 100.0,
-                                        // fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  Text("User 1",style:TextStyle(fontSize:15,fontWeight: FontWeight.bold)),
-
-                                ]
-                              ),
-
-                              Column(
-                                  children:[
-                                    // const Padding(padding: EdgeInsets.only(left: 10,right: 10)),
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(25),
-                                      child:GestureDetector(
-                                        onTap:(){
-                                          debugPrint("You Have selected Account2");
-                                          // Navigator.of(context).pop();
-                                          Navigator.push(context, MaterialPageRoute(builder: (context)=>User2()));
-                                        },
-                                        child: Image.asset("assets/Images/OIP.jpeg",
-                                          width: 100.0,
-                                          height: 100.0,
-                                          // fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
-                                    Text("User 2",style:TextStyle(fontSize:15,fontWeight: FontWeight.bold)),
-
-                                  ]
-                              ),
-
-
-                              Column(
-                                  children:[
-                                    // const Padding(padding: EdgeInsets.only(left: 10,right: 10)),
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(25),
-                                      child:GestureDetector(
-                                        onTap:(){
-                                          debugPrint("You Have selected Account3");
-                                          // Navigator.of(context).pop();
-                                          Navigator.push(context, MaterialPageRoute(builder: (context)=>User3()));
-                                        },
-                                        child: Image.asset("assets/Images/OIP.jpeg",
-                                          width: 100.0,
-                                          height: 100.0,
-                                          // fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
-                                    Text("User 3",style:TextStyle(fontSize:15,fontWeight: FontWeight.bold)),
-
-                                  ]
-                              ),
-                              ]
-                        ),
-
-                        SizedBox(height: 20,),
-
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: <Widget>[
-                              Column(
-                                  children:[
-                                    // const Padding(padding: EdgeInsets.only(left: 10,right: 10)),
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(25),
-                                      child:GestureDetector(
-                                        onTap:(){
-                                          debugPrint("You Have selected Account4");
-                                          // Navigator.of(context).pop();
-                                          Navigator.push(context, MaterialPageRoute(builder: (context)=>User4()));
-                                        },
-                                        child: Image.asset("assets/Images/OIP.jpeg",
-                                          width: 100.0,
-                                          height: 100.0,
-                                          // fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
-                                    Text("User 4",style:TextStyle(fontSize:15,fontWeight: FontWeight.bold)),
-
-                                  ]
-                              ),
-
-
-                              Column(
-                                  children:[
-                                    // const Padding(padding: EdgeInsets.only(left: 10,right: 10)),
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(25),
-                                      child:GestureDetector(
-                                        onTap:(){
-                                          debugPrint("You Have selected Account5");
-                                          // Navigator.of(context).pop();
-                                          Navigator.push(context, MaterialPageRoute(builder: (context)=>User5()));
-                                        },
-                                        child: Image.asset("assets/Images/OIP.jpeg",
-                                          width: 100.0,
-                                          height: 100.0,
-                                          // fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
-                                    Text("User 5",style:TextStyle(fontSize:15,fontWeight: FontWeight.bold)),
-
-                                  ]
-                              ),
-                              Column(
-                                  children:[
-                                    // const Padding(padding: EdgeInsets.only(left: 10,right: 10)),
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(25),
-                                      child:GestureDetector(
-                                        onTap:(){
-                                          debugPrint("You Have selected Account6");
-                                          // Navigator.of(context).pop();
-                                          Navigator.push(context, MaterialPageRoute(builder: (context)=>User6()));
-                                        },
-                                        child: Image.asset("assets/Images/OIP.jpeg",
-                                          width: 100.0,
-                                          height: 100.0,
-                                          // fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
-                                    Text("User 6",style:TextStyle(fontSize:15,fontWeight: FontWeight.bold)),
-
-                                  ]
-                              ),
-                            ]
-                        ),
-                        SizedBox(height: 20,),
-
+                        _qa(Icons.qr_code_scanner, "UPI", Colors.blueGrey, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const UpiQrScreen()))),
+                        _qa(Icons.people, "Refer", Colors.deepPurple, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const ReferEarnScreen())).then((_) => _refresh())),
+                        _qa(Icons.card_giftcard, "Rewards", Colors.amber, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const RewardsScreen())).then((_) => _refresh())),
+                        _qa(Icons.track_changes, "Goals", Colors.teal, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SavingsGoalsScreen())).then((_) => _refresh())),
                       ],
-                    )
-                ),//Peoples
-              ]
-            ),
-          ),
+                    ),
+                    const SizedBox(height: 12),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        _qa(Icons.handshake, "Request", Colors.indigo, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const RequestMoneyScreen())).then((_) => _refresh())),
+                        _qa(Icons.people_outline, "Split", Colors.deepPurple, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const BillSplitScreen())).then((_) => _refresh())),
+                        _qa(Icons.calculate, "EMI", Colors.red, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const EmiCalculatorScreen()))),
+                        _qa(Icons.currency_exchange, "Currency", Colors.teal, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const CurrencyConverterScreen()))),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        _qa(Icons.account_balance_wallet, "Budget", Colors.green, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const BudgetPlannerScreen())).then((_) => _refresh())),
+                        _qa(Icons.card_giftcard, "Gifts", Colors.pink, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const GiftCardsScreen())).then((_) => _refresh())),
+                        _qa(Icons.emoji_events, "Badges", Colors.amber, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AchievementsScreen()))),
+                        _qa(Icons.support_agent, "Support", Colors.blueGrey, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SupportScreen()))),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        _qa(Icons.trending_up, "SIP", Colors.indigo, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SipCalculatorScreen()))),
+                        _qa(Icons.account_balance, "Loans", Colors.blue, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const LoanApplicationScreen()))),
+                        _qa(Icons.notifications, "Notifs", Colors.blueGrey, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const NotificationsScreen()))),
+                        _qa(Icons.login, "Check-in", Colors.orange, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const DailyCheckinScreen())).then((_) => _refresh())),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        _qa(Icons.credit_score, "Credit", Colors.blue.shade900, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const CreditScoreScreen()))),
+                        _qa(Icons.trending_up, "Invest", Colors.purple, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const InvestmentPortfolioScreen()))),
+                        _qa(Icons.alarm, "Reminders", Colors.deepOrange, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const PaymentRemindersScreen()))),
+                        _qa(Icons.search, "Search", Colors.blueGrey, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const TransactionSearchScreen()))),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        _qa(Icons.account_balance, "FD", Colors.lightBlue, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const FdCalculatorScreen()))),
+                        _qa(Icons.repeat, "RD", Colors.teal, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const RdCalculatorScreen()))),
+                        _qa(Icons.receipt_long, "GST", Colors.indigo, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const GstCalculatorScreen()))),
+                        _qa(Icons.restaurant, "Tip", Colors.green, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const TipCalculatorScreen()))),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        _qa(Icons.subscriptions, "Subs", Colors.cyan, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SubscriptionManagerScreen()))),
+                        _qa(Icons.calendar_month, "Calendar", Colors.blue, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const CalendarViewScreen()))),
+                        _qa(Icons.credit_card, "BNPL", Colors.deepPurple, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const BnplScreen()))),
+                        _qa(Icons.health_and_safety, "Insurance", Colors.blue, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const InsuranceHubScreen()))),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        _qa(Icons.trending_up, "Stocks", Colors.indigo, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const StockTradingScreen()))),
+                        _qa(Icons.account_balance, "Tax", Colors.red, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const IncomeTaxScreen()))),
+                        _qa(Icons.beach_access, "Retire", Colors.teal, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const RetirementPlannerScreen()))),
+                        _qa(Icons.monetization_on, "Net Worth", Colors.deepPurple, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const NetWorthScreen()))),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        _qa(Icons.trending_up, "Mutual", Colors.orange, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const MutualFundScreen()))),
+                        _qa(Icons.assessment, "Report", Colors.blueGrey, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const MonthlyReportScreen()))),
+                        _qa(Icons.payments, "Prepay", Colors.brown, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const LoanPrepaymentScreen()))),
+                        _qa(Icons.currency_bitcoin, "Crypto", Colors.amber, () => Navigator.push(context, MaterialPageRoute(builder: (_) => const CryptoWalletScreen()))),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 16),
 
+              // Services
+              _sectionTitle('Services'),
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: _cardStyle(),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        _sb(Icons.receipt, "Light Bill", () => Navigator.push(context, MaterialPageRoute(builder: (_) => const LightBill()))),
+                        _sb(Icons.add_card, "Add Cart", () => Navigator.push(context, MaterialPageRoute(builder: (_) => const AddCart()))),
+                        _sb(Icons.phone_android, "Recharge", () => Navigator.push(context, MaterialPageRoute(builder: (_) => const Recharge()))),
+                        _sb(Icons.account_balance, "Balance", () => Navigator.push(context, MaterialPageRoute(builder: (_) => const Balance()))),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        _sb(Icons.business, "Business", () => Navigator.push(context, MaterialPageRoute(builder: (_) => const YourBusiness()))),
+                        _sb(Icons.ad_units, "Units", () => Navigator.push(context, MaterialPageRoute(builder: (_) => const Unit()))),
+                        _sb(Icons.account_balance_wallet, "Wallet", () => Navigator.push(context, MaterialPageRoute(builder: (_) => const Wallet()))),
+                        _sb(Icons.analytics, "Analytics", () => Navigator.push(context, MaterialPageRoute(builder: (_) => const SpendingAnalyticsScreen()))),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 16),
+
+              // People
+              _sectionTitle('People'),
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: _cardStyle(),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        _pa("User 1", const User1()),
+                        _pa("User 2", const User2()),
+                        _pa("User 3", const User3()),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        _pa("User 4", const User4()),
+                        _pa("User 5", const User5()),
+                        _pa("User 6", const User6()),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
+
+  Widget _sectionTitle(String title) {
+    return Align(alignment: Alignment.centerLeft, child: Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Text(title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+    ));
+  }
+
+  BoxDecoration _cardStyle() => BoxDecoration(
+    color: Colors.white,
+    borderRadius: BorderRadius.circular(12),
+    boxShadow: [BoxShadow(color: Colors.grey.withOpacity(0.2), blurRadius: 5)],
+  );
+
+  Widget _qa(IconData icon, String label, Color color, VoidCallback onTap) {
+    return Column(
+      children: [
+        ElevatedButton(
+          onPressed: onTap,
+          child: Icon(icon, color: Colors.white, size: 22),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: color, padding: const EdgeInsets.all(14),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)), elevation: 3,
+          ),
+        ),
+        const SizedBox(height: 4),
+        Text(label, style: const TextStyle(fontSize: 11, fontWeight: FontWeight.bold)),
+      ],
+    );
+  }
+
+  Widget _sb(IconData icon, String label, VoidCallback onTap) {
+    return Column(
+      children: [
+        ElevatedButton(
+          onPressed: onTap,
+          child: Icon(icon),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.cyanAccent, foregroundColor: Colors.black,
+            padding: const EdgeInsets.all(16), elevation: 3,
+          ),
+        ),
+        const SizedBox(height: 4),
+        Text(label, style: const TextStyle(fontSize: 13, fontWeight: FontWeight.bold)),
+      ],
+    );
+  }
+
+  Widget _pa(String name, Widget page) {
+    return Column(
+      children: [
+        GestureDetector(
+          onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => page)),
+          child: CircleAvatar(
+            radius: 40,
+            backgroundColor: Colors.blue.shade100,
+            child: Text(name.split(' ').map((e) => e[0]).join(), style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.blue)),
+          ),
+        ),
+        const SizedBox(height: 4),
+        Text(name, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+      ],
+    );
+  }
 }
-
-
