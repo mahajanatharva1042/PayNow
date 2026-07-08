@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:paykaro/services/wallet_service.dart';
+import 'package:paynow/services/wallet_service.dart';
 
 class LightBill extends StatelessWidget {
   const LightBill({super.key});

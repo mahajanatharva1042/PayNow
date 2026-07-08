@@ -106,7 +106,7 @@ class _BillSplitScreenState extends State<BillSplitScreen> {
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Insufficient balance for your share'), backgroundColor: Colors.red));
                       return;
                     }
-                    _wallet.sendMoney('${_selectedUsers.length} people (Bill Split)', myShare);
+                    _wallet.sendMoney('${_selectedUsers.length} people (Bill Split)', myShare.toDouble());
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text('₹${myShare.toStringAsFixed(0)} paid (your share)'),
                       backgroundColor: Colors.green,

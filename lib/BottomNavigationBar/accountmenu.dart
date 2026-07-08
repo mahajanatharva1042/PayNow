@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:paykaro/services/wallet_service.dart';
-import 'package:paykaro/logout.dart';
-import 'package:paykaro/screens/add_money_screen.dart';
-import 'package:paykaro/screens/rewards_screen.dart';
-import 'package:paykaro/screens/savings_goals_screen.dart';
+import 'package:paynow/services/wallet_service.dart';
+import 'package:paynow/logout.dart';
+import 'package:paynow/screens/add_money_screen.dart';
+import 'package:paynow/screens/rewards_screen.dart';
+import 'package:paynow/screens/savings_goals_screen.dart';
 
 class AccountMenu extends StatefulWidget {
   final String? username;

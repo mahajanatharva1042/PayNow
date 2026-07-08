@@ -57,7 +57,7 @@ class _TipCalculatorScreenState extends State<TipCalculatorScreen> {
                 const Divider(),
                 _row('Total', '₹${_total.toStringAsFixed(0)}', Colors.green.shade700),
                 _row('Per Person', '₹${_perPerson.toStringAsFixed(2)}', Colors.blue),
-                if (int.tryParse(_peopleCtrl.text) ?? 1 > 1) ...[
+                if ((int.tryParse(_peopleCtrl.text) ?? 1) > 1) ...[
                   const Divider(),
                   _row('People', _peopleCtrl.text, Colors.grey.shade600),
                 ],

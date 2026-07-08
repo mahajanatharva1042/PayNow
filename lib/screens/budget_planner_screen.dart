@@ -169,7 +169,7 @@ class _BudgetPlannerScreenState extends State<BudgetPlannerScreen> {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(6),
                         child: LinearProgressIndicator(
-                          value: pct,
+                          value: pct.toDouble(),
                           minHeight: 8,
                           backgroundColor: Colors.grey.shade200,
                           valueColor: AlwaysStoppedAnimation(isOver ? Colors.red : Colors.green),

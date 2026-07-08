@@ -22,7 +22,7 @@ class _StockTradingScreenState extends State<StockTradingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Stock Trading'), backgroundColor: Colors.indigo, actions: [
-        IconButton(icon: const Icon(Icons.trending_up), tooltip: 'Simulate Market Day', onPressed: () { _wallet.simulateStockMarket(); ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Market simulated - Day ${_wallet.stockMarketDay}'))); }),
+        IconButton(icon: const Icon(Icons.trending_up), tooltip: 'Simulate Market Day', onPressed: () { _wallet.simulateStockMarket(); ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Market simulated - Day ${_wallet.stockMarketDay}'))); }),
         IconButton(icon: const Icon(Icons.account_balance_wallet), tooltip: 'Balance', onPressed: () => showDialog(context: context, builder: (_) => AlertDialog(title: const Text('Balance'), content: Text('₹${_wallet.balance.toStringAsFixed(0)}')))),
       ]),
       body: Column(children: [
@@ -54,7 +54,7 @@ class _StockTradingScreenState extends State<StockTradingScreen> {
       trailing: _wallet.stockPL(e.key) >= 0
         ? Text('+₹${_wallet.stockPL(e.key).toStringAsFixed(0)}', style: const TextStyle(color: Colors.green, fontWeight: FontWeight.bold))
         : Text('-₹${_wallet.stockPL(e.key).abs().toStringAsFixed(0)}', style: const TextStyle(color: Colors.red, fontWeight: FontWeight.bold)),
-    ))).toList()..add(const SizedBox(height: 80)));
+    ))).toList()..add(const Card(child: SizedBox(height: 80))));
   }
 
   Widget _portfolioView() {
@@ -67,7 +67,7 @@ class _StockTradingScreenState extends State<StockTradingScreen> {
         Text('₹${(s.quantity * (_wallet.stockPrices[s.symbol] ?? 0)).toStringAsFixed(0)}', style: const TextStyle(fontWeight: FontWeight.bold)),
         Text('P&L: ${_wallet.stockPL(s.symbol).toStringAsFixed(0)}', style: TextStyle(fontSize: 12, color: _wallet.stockPL(s.symbol) >= 0 ? Colors.green : Colors.red)),
       ]),
-    ))).toList()..add(const SizedBox(height: 80)));
+    ))).toList()..add(const Card(child: SizedBox(height: 80))));
   }
 
   Widget _tradeView() {

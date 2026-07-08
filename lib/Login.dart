@@ -1,8 +1,8 @@
 // import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:paykaro/BottomNavigationBar/Home.dart';
-import 'package:paykaro/MainPage2.dart';
-import 'package:paykaro/main.dart';
+import 'package:paynow/BottomNavigationBar/Home.dart';
+import 'package:paynow/MainPage2.dart';
+import 'package:paynow/main.dart';
 
 class LogIn extends StatefulWidget {
   const LogIn({super.key});

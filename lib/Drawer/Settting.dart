@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:paykaro/services/wallet_service.dart';
-import 'package:paykaro/screens/set_pin_screen.dart';
-import 'package:paykaro/screens/rewards_screen.dart';
-import 'package:paykaro/screens/spending_analytics_screen.dart';
+import 'package:paynow/services/wallet_service.dart';
+import 'package:paynow/screens/set_pin_screen.dart';
+import 'package:paynow/screens/rewards_screen.dart';
+import 'package:paynow/screens/spending_analytics_screen.dart';
 
 class Setting extends StatefulWidget {
   const Setting({super.key});

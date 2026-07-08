@@ -60,7 +60,7 @@ class _CryptoWalletScreenState extends State<CryptoWalletScreen> {
           ? Text('₹${(holding * e.value).toStringAsFixed(0)}', style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.green))
           : null,
       ));
-    }).toList()..add(const SizedBox(height: 80)));
+    }).toList()..add(const Card(child: SizedBox(height: 80))));
   }
 
   Widget _walletView() {
@@ -77,7 +77,7 @@ class _CryptoWalletScreenState extends State<CryptoWalletScreen> {
           Text('P&L: ₹${pl.toStringAsFixed(0)}', style: TextStyle(fontSize: 12, color: pl >= 0 ? Colors.green : Colors.red)),
         ]),
       ));
-    }).toList()..add(const SizedBox(height: 80)));
+    }).toList()..add(const Card(child: SizedBox(height: 80))));
   }
 
   Widget _tradeView() {

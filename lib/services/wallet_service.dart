@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 class Transaction {
   final String id;
@@ -143,7 +143,7 @@ class BnplOrder {
   final double totalAmount;
   final double paidAmount;
   final int totalInstallments;
-  final int paidInstallments;
+  int paidInstallments;
   final DateTime date;
   BnplOrder({required this.id, required this.merchant, required this.totalAmount, required this.totalInstallments, this.paidAmount = 0, this.paidInstallments = 0, DateTime? date})
       : date = date ?? DateTime.now();
@@ -756,14 +756,14 @@ class WalletService extends ChangeNotifier {
 
   double taxWithDeductions(double income, double deductions) {
     final taxable = (income - deductions).clamp(0, income);
-    return taxOldRegime(taxable);
+    return taxOldRegime(taxable.toDouble());
   }
 
   // Retirement Planner
   double retirementCorpus(double currentAge, double retirementAge, double monthlyExpense, double inflation, double returnRate) {
     final yearsToRetirement = retirementAge - currentAge;
     final yearsInRetirement = 85 - retirementAge;
-    final monthlyAtRetirement = monthlyExpense * _pow(1 + inflation / 100, yearsToRetirement);
+    final monthlyAtRetirement = monthlyExpense * _pow(1 + inflation / 100, yearsToRetirement.toInt());
     final annualAtRetirement = monthlyAtRetirement * 12;
     double corpus = 0;
     for (int y = 0; y < yearsInRetirement; y++) {
@@ -776,7 +776,7 @@ class WalletService extends ChangeNotifier {
     final months = years * 12;
     final monthlyRate = returnRate / 12 / 100;
     if (monthlyRate <= 0) return targetCorpus / months;
-    return targetCorpus * monthlyRate / (_pow(1 + monthlyRate, months) - 1);
+    return targetCorpus * monthlyRate / (_pow(1 + monthlyRate, months.toInt()) - 1);
   }
 
   double _pow(double base, int exp) {
@@ -864,14 +864,14 @@ class WalletService extends ChangeNotifier {
         final remainingMonths = tenureMonths - m;
         return {
           'originalEmi': emi, 'totalInterest': totalInterest,
-          'monthsSaved': remainingMonths, 'interestSaved': 0,
-          'newBalance': 0, 'newTenure': m,
+          'monthsSaved': remainingMonths.toDouble(), 'interestSaved': 0.0,
+          'newBalance': 0.0, 'newTenure': m.toDouble(),
         };
       }
     }
     return {
       'originalEmi': emi, 'totalInterest': totalInterest,
-      'newBalance': balance, 'newTenure': tenureMonths,
+      'newBalance': balance, 'newTenure': tenureMonths.toDouble(),
     };
   }
 

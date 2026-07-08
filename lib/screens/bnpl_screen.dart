@@ -67,7 +67,7 @@ class _BnplScreenState extends State<BnplScreen> {
                       child: Text(o.isComplete ? 'Paid' : '${o.paidInstallments}/${o.totalInstallments}', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: o.isComplete ? Colors.green : Colors.deepPurple))),
                   ]),
                   const SizedBox(height: 8),
-                  ClipRRect(borderRadius: BorderRadius.circular(6), child: LinearProgressIndicator(value: progress, minHeight: 6, backgroundColor: Colors.grey.shade200, valueColor: AlwaysStoppedAnimation(o.isComplete ? Colors.green : Colors.deepPurple))),
+                  ClipRRect(borderRadius: BorderRadius.circular(6), child: LinearProgressIndicator(value: progress.toDouble(), minHeight: 6, backgroundColor: Colors.grey.shade200, valueColor: AlwaysStoppedAnimation(o.isComplete ? Colors.green : Colors.deepPurple))),
                   const SizedBox(height: 6),
                   Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                     Text('₹${o.paidAmount.toStringAsFixed(0)} paid', style: TextStyle(color: Colors.grey.shade600, fontSize: 13)),

@@ -1,52 +1,52 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:paykaro/services/wallet_service.dart';
-import 'package:paykaro/BottomNavigationBar/Home.dart';
-import 'package:paykaro/BottomNavigationBar/Search.dart';
-import 'package:paykaro/BottomNavigationBar/Pay.dart';
-import 'package:paykaro/BottomNavigationBar/Account.dart';
-import 'package:paykaro/Drawer/History.dart';
-import 'package:paykaro/Drawer/Customization.dart';
-import 'package:paykaro/Drawer/Settting.dart';
-import 'package:paykaro/logout.dart';
-import 'package:paykaro/BottomNavigationBar/accountmenu.dart';
-import 'package:paykaro/screens/rewards_screen.dart';
-import 'package:paykaro/screens/savings_goals_screen.dart';
-import 'package:paykaro/screens/request_money_screen.dart';
-import 'package:paykaro/screens/bill_split_screen.dart';
-import 'package:paykaro/screens/spending_analytics_screen.dart';
-import 'package:paykaro/screens/upi_qr_screen.dart';
-import 'package:paykaro/screens/refer_earn_screen.dart';
-import 'package:paykaro/screens/emi_calculator_screen.dart';
-import 'package:paykaro/screens/currency_converter_screen.dart';
-import 'package:paykaro/screens/budget_planner_screen.dart';
-import 'package:paykaro/screens/gift_cards_screen.dart';
-import 'package:paykaro/screens/achievements_screen.dart';
-import 'package:paykaro/screens/support_screen.dart';
-import 'package:paykaro/screens/sip_calculator_screen.dart';
-import 'package:paykaro/screens/loan_application_screen.dart';
-import 'package:paykaro/screens/notifications_screen.dart';
-import 'package:paykaro/screens/daily_checkin_screen.dart';
-import 'package:paykaro/screens/credit_score_screen.dart';
-import 'package:paykaro/screens/investment_portfolio_screen.dart';
-import 'package:paykaro/screens/payment_reminders_screen.dart';
-import 'package:paykaro/screens/transaction_search_screen.dart';
-import 'package:paykaro/screens/fd_calculator_screen.dart';
-import 'package:paykaro/screens/rd_calculator_screen.dart';
-import 'package:paykaro/screens/gst_calculator_screen.dart';
-import 'package:paykaro/screens/tip_calculator_screen.dart';
-import 'package:paykaro/screens/subscription_manager_screen.dart';
-import 'package:paykaro/screens/calendar_view_screen.dart';
-import 'package:paykaro/screens/bnpl_screen.dart';
-import 'package:paykaro/screens/insurance_hub_screen.dart';
-import 'package:paykaro/screens/stock_trading_screen.dart';
-import 'package:paykaro/screens/income_tax_screen.dart';
-import 'package:paykaro/screens/retirement_planner_screen.dart';
-import 'package:paykaro/screens/net_worth_screen.dart';
-import 'package:paykaro/screens/mutual_fund_screen.dart';
-import 'package:paykaro/screens/monthly_report_screen.dart';
-import 'package:paykaro/screens/loan_prepayment_screen.dart';
-import 'package:paykaro/screens/crypto_wallet_screen.dart';
+import 'package:paynow/services/wallet_service.dart';
+import 'package:paynow/BottomNavigationBar/Home.dart';
+import 'package:paynow/BottomNavigationBar/Search.dart';
+import 'package:paynow/BottomNavigationBar/Pay.dart';
+import 'package:paynow/BottomNavigationBar/Account.dart';
+import 'package:paynow/Drawer/History.dart';
+import 'package:paynow/Drawer/Customization.dart';
+import 'package:paynow/Drawer/Settting.dart';
+import 'package:paynow/logout.dart';
+import 'package:paynow/BottomNavigationBar/accountmenu.dart';
+import 'package:paynow/screens/rewards_screen.dart';
+import 'package:paynow/screens/savings_goals_screen.dart';
+import 'package:paynow/screens/request_money_screen.dart';
+import 'package:paynow/screens/bill_split_screen.dart';
+import 'package:paynow/screens/spending_analytics_screen.dart';
+import 'package:paynow/screens/upi_qr_screen.dart';
+import 'package:paynow/screens/refer_earn_screen.dart';
+import 'package:paynow/screens/emi_calculator_screen.dart';
+import 'package:paynow/screens/currency_converter_screen.dart';
+import 'package:paynow/screens/budget_planner_screen.dart';
+import 'package:paynow/screens/gift_cards_screen.dart';
+import 'package:paynow/screens/achievements_screen.dart';
+import 'package:paynow/screens/support_screen.dart';
+import 'package:paynow/screens/sip_calculator_screen.dart';
+import 'package:paynow/screens/loan_application_screen.dart';
+import 'package:paynow/screens/notifications_screen.dart';
+import 'package:paynow/screens/daily_checkin_screen.dart';
+import 'package:paynow/screens/credit_score_screen.dart';
+import 'package:paynow/screens/investment_portfolio_screen.dart';
+import 'package:paynow/screens/payment_reminders_screen.dart';
+import 'package:paynow/screens/transaction_search_screen.dart';
+import 'package:paynow/screens/fd_calculator_screen.dart';
+import 'package:paynow/screens/rd_calculator_screen.dart';
+import 'package:paynow/screens/gst_calculator_screen.dart';
+import 'package:paynow/screens/tip_calculator_screen.dart';
+import 'package:paynow/screens/subscription_manager_screen.dart';
+import 'package:paynow/screens/calendar_view_screen.dart';
+import 'package:paynow/screens/bnpl_screen.dart';
+import 'package:paynow/screens/insurance_hub_screen.dart';
+import 'package:paynow/screens/stock_trading_screen.dart';
+import 'package:paynow/screens/income_tax_screen.dart';
+import 'package:paynow/screens/retirement_planner_screen.dart';
+import 'package:paynow/screens/net_worth_screen.dart';
+import 'package:paynow/screens/mutual_fund_screen.dart';
+import 'package:paynow/screens/monthly_report_screen.dart';
+import 'package:paynow/screens/loan_prepayment_screen.dart';
+import 'package:paynow/screens/crypto_wallet_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   String? username, password;
@@ -57,7 +57,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final _wallet = WalletService();
-  final _pageData = const [Home(), Search(), Pay(), Account()];
+  final _pageData = [Home(), Search(), Pay(), Account()];
   int _selectedIndex = 0;
 
   @override
@@ -131,7 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ElevatedButton.icon(
                     icon: const Icon(Icons.edit, color: Colors.green, size: 30),
                     label: const Text('Edit'),
-                    onPressed: () { Navigator.of(context).pop(); Navigator.push(context, MaterialPageRoute(builder: (_) => const Customization())); },
+                    onPressed: () { Navigator.of(context).pop(); Navigator.push(context, MaterialPageRoute(builder: (_) => Customization())); },
                     style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
                   ),
                   const SizedBox(height: 10),
@@ -182,7 +182,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   _di(Icons.assessment, "Monthly Report", () { Navigator.of(context).pop(); Navigator.push(context, MaterialPageRoute(builder: (_) => const MonthlyReportScreen())); }),
                   _di(Icons.payments, "Loan Prepay", () { Navigator.of(context).pop(); Navigator.push(context, MaterialPageRoute(builder: (_) => const LoanPrepaymentScreen())); }),
                   _di(Icons.currency_bitcoin, "Crypto Wallet", () { Navigator.of(context).pop(); Navigator.push(context, MaterialPageRoute(builder: (_) => const CryptoWalletScreen())); }),
-                  _di(Icons.dashboard_customize, "Customization", () { Navigator.of(context).pop(); Navigator.push(context, MaterialPageRoute(builder: (_) => const Customization())); }),
+                  _di(Icons.dashboard_customize, "Customization", () { Navigator.of(context).pop(); Navigator.push(context, MaterialPageRoute(builder: (_) => Customization())); }),
                   _di(Icons.settings, "Setting", () { Navigator.of(context).pop(); Navigator.push(context, MaterialPageRoute(builder: (_) => const Setting())); }),
                   _di(Icons.logout, "Log Out", () { Navigator.of(context).pop(); Navigator.push(context, MaterialPageRoute(builder: (_) => const LogOut())); }),
                 ],

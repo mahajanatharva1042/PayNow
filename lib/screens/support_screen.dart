@@ -32,7 +32,7 @@ class _SupportScreenState extends State<SupportScreen> {
           Container(
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-              gradient: const LinearGradient(colors: [Colors.blueGrey, Colors.blueGrey.shade700]),
+              gradient: LinearGradient(colors: [Colors.blueGrey, Colors.blueGrey.shade700]),
               borderRadius: BorderRadius.circular(16),
             ),
             child: Column(

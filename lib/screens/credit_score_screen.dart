@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:paykaro/services/wallet_service.dart';
+import 'package:paynow/services/wallet_service.dart';
 
 class CreditScoreScreen extends StatelessWidget {
   const CreditScoreScreen({super.key});
@@ -22,7 +22,7 @@ class CreditScoreScreen extends StatelessWidget {
     if (hasLoans) score += 50;
     if (wallet.referralCount > 0) score += 30;
     if (wallet.checkinStreak > 7) score += 50;
-    if (wallet._achievements.where((a) => a.isUnlocked).length > 5) score += 50;
+    if (wallet.achievements.where((a) => a.isUnlocked).length > 5) score += 50;
     score = score.clamp(300, 900);
 
     String grade;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:paykaro/Login.dart';
+import 'package:paynow/Login.dart';
 class LogOut extends StatelessWidget {
   const LogOut({super.key});
 
