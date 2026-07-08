@@ -1,8 +1,5 @@
-// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:paynow/BottomNavigationBar/Home.dart';
 import 'package:paynow/MainPage2.dart';
-import 'package:paynow/main.dart';
 
 class LogIn extends StatefulWidget {
   const LogIn({super.key});
@@ -12,164 +9,193 @@ class LogIn extends StatefulWidget {
 }
 
 class _LogInState extends State<LogIn> {
+  final usernameCtrl = TextEditingController();
+  final passCtrl = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+  bool _obscureText = true;
+  bool _loading = false;
 
-  TextEditingController username=TextEditingController();
-  TextEditingController pass=TextEditingController();
-  final formKey=GlobalKey<FormState>();
-  bool _obscureText = false; // Initial state to obscure text
+  void _togglePassword() => setState(() => _obscureText = !_obscureText);
 
-  void _togglePasswordVisibility() {
-    setState(() {
-      _obscureText = !_obscureText; // Toggle the visibility
-    });
+  @override
+  void dispose() {
+    usernameCtrl.dispose();
+    passCtrl.dispose();
+    super.dispose();
   }
 
+  void _submit() {
+    if (!formKey.currentState!.validate()) return;
+    setState(() => _loading = true);
+    Future.delayed(const Duration(milliseconds: 600), () {
+      if (!mounted) return;
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (_) => HomeScreen(
+            username: usernameCtrl.text,
+            password: passCtrl.text,
+          ),
+        ),
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Form(
-        key: formKey,
-        child:Container(
-          width: double.infinity,
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [Colors.blue,Colors.pink],
-                  begin: Alignment.topRight,
-                  end:Alignment.bottomLeft
-              )
-          ),
-          child: Padding(
-            padding: const EdgeInsets.only(top:80),
-            child: Column(
-              // mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  margin:EdgeInsets.only(top:10,bottom: 30,left: 20,right: 20),
-                  width: 150,
-                  height: 150,
-                  decoration:  BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        offset: Offset(0, 3), // Changes position of the shadow
-                      ),
-                    ],
-                    shape: BoxShape.circle,
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(75),
-                    child:GestureDetector(
-                      onTap: (){
-                        // _pickFile();
-                        debugPrint("Kuch Bhi");
-                      },
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Center(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 32),
+            child: Form(
+              key: formKey,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const SizedBox(height: 40),
+                  Container(
+                    width: 88,
+                    height: 88,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.08),
+                          blurRadius: 16,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(44),
                       child: Image.asset("assets/Images/PayKaro.jpg",
-                        width: 100.0,
-                        height: 100.0,
-                        fit: BoxFit.cover,
+                          fit: BoxFit.cover),
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+                  const Text(
+                    "Welcome back",
+                    style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.w700,
+                      color: Color(0xFF1A1D21),
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    "Sign in to your account",
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.grey.shade500,
+                    ),
+                  ),
+                  const SizedBox(height: 48),
+                  TextFormField(
+                    controller: usernameCtrl,
+                    style: const TextStyle(fontSize: 15),
+                    textInputAction: TextInputAction.next,
+                    validator: (v) =>
+                        v == null || v.trim().isEmpty ? "Required" : null,
+                    decoration: InputDecoration(
+                      hintText: "Username",
+                      hintStyle: TextStyle(color: Colors.grey.shade400),
+                      prefixIcon: Icon(Icons.person_outline,
+                          size: 22, color: Colors.grey.shade400),
+                      filled: true,
+                      fillColor: Colors.grey.shade50,
+                      contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 18),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide.none,
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide(
+                            color: const Color(0xFF4A90E2), width: 1.5),
                       ),
                     ),
-
-
                   ),
-                ),
-                SizedBox(height: 10,),
-                Text("Enter Username",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
-                SizedBox(height: 7,),
-                Container(
-                    padding: EdgeInsets.only(left:10,right: 10,top:0,bottom:0),
-                    margin: EdgeInsets.only(left: 20,right:20,top: 10,bottom: 10),
-                    decoration: BoxDecoration(
-                      color: Colors.white70,
-                      // border: Border.all(),
-                      borderRadius: BorderRadius.circular(15),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 5,
-                          blurRadius: 7,
-                          offset: Offset(0, 3), // Changes position of the shadow
+                  const SizedBox(height: 16),
+                  TextFormField(
+                    controller: passCtrl,
+                    obscureText: _obscureText,
+                    style: const TextStyle(fontSize: 15),
+                    textInputAction: TextInputAction.done,
+                    onFieldSubmitted: (_) => _submit(),
+                    validator: (v) =>
+                        v == null || v.isEmpty ? "Required" : null,
+                    decoration: InputDecoration(
+                      hintText: "Password",
+                      hintStyle: TextStyle(color: Colors.grey.shade400),
+                      prefixIcon: Icon(Icons.lock_outline,
+                          size: 22, color: Colors.grey.shade400),
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _obscureText
+                              ? Icons.visibility_off_outlined
+                              : Icons.visibility_outlined,
+                          size: 22,
+                          color: Colors.grey.shade400,
                         ),
-                      ],
+                        onPressed: _togglePassword,
+                      ),
+                      filled: true,
+                      fillColor: Colors.grey.shade50,
+                      contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 18),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide.none,
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide(
+                            color: const Color(0xFF4A90E2), width: 1.5),
+                      ),
                     ),
-                    child:Column(
-                      children: [
-                        TextFormField(
-                          controller: username,
-                          validator: (value){
-                            if(value!.isEmpty){
-                              return "Please Username";
-                            }
-                            return null;
-                          },
-                          decoration: InputDecoration(
-                              labelText: "Enter Username",
-                              border: InputBorder.none
-                          ),
+                  ),
+                  const SizedBox(height: 32),
+                  SizedBox(
+                    width: double.infinity,
+                    height: 52,
+                    child: ElevatedButton(
+                      onPressed: _loading ? null : _submit,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF4A90E2),
+                        foregroundColor: Colors.white,
+                        elevation: 0,
+                        disabledBackgroundColor: const Color(0xFF4A90E2).withOpacity(0.6),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
                         ),
-                      ],
-                    )
-                ),
-                SizedBox(height: 10,),
-                Text("Enter Password",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
-                SizedBox(height: 7,),
-                Container(
-                    padding: EdgeInsets.only(left:10,right: 10,top:0,bottom:0),
-                    margin: EdgeInsets.only(left: 20,right:20,top: 10,bottom: 10),
-                    decoration: BoxDecoration(
-                      color: Colors.white70,
-                      // border: Border.all(),
-                      borderRadius: BorderRadius.circular(15),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 5,
-                          blurRadius: 7,
-                          offset: Offset(0, 3), // Changes position of the shadow
-                        ),
-                      ],
-                    ),
-                    child:Column(
-                      children: [
-                        TextFormField(
-                          obscureText: true,
-                          controller: pass,
-                          validator: (value){
-                            if(value!.isEmpty){
-                              return "Please Password";
-                            }
-                            return null;
-                          },
-                          decoration: InputDecoration(
-                              labelText: "Enter Password",
-                              border: InputBorder.none,
-                              suffixIcon: IconButton(
-                              icon: Icon(
-                                _obscureText ? Icons.visibility_off : Icons.visibility,
+                      ),
+                      child: _loading
+                          ? const SizedBox(
+                              width: 22,
+                              height: 22,
+                              child: CircularProgressIndicator(
+                                strokeWidth: 2.5,
+                                color: Colors.white,
                               ),
-                              onPressed: _togglePasswordVisibility,),
-                          ),
-                        ),
-                      ],
-                    )
-                ),
-                SizedBox(height: 20,),
-                ElevatedButton(onPressed: (){
-                  if(formKey.currentState!.validate()){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen(
-                      username:username.text,
-                      password:pass.text,
-                    )));
-                  }
-                }, child: Text("LogIn",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),))
-              ],
+                            )
+                          : const Text(
+                              "Sign In",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                    ),
+                  ),
+                  const SizedBox(height: 40),
+                ],
+              ),
             ),
           ),
-        )
+        ),
       ),
     );
   }
